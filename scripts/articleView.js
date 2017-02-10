@@ -67,7 +67,8 @@ articleView.setTeasers = function() {
 };
 
 articleView.initNewArticlePage = function() {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later.
+  // DONE: Ensure the main .tab-content area is revealed. We might add more tabs later.
+  $('.tab-content').show();
 
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
