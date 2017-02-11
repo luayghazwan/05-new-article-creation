@@ -80,22 +80,37 @@ articleView.initNewArticlePage = function() {
   });
 
   // TODO: Add an event handler to update the preview and the export field if any inputs change.
-
+  $('')
+  // update the preview
+  //update the export
+  //
 };
 
 articleView.create = function() {
-  // TODO: Set up a var to hold the new article we are creating.
+  // DONE: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
+  var article;
+  $('#articles').empty();
 
+  // DONE: Instantiate an article based on what's in the form fields:
+  article = new Article({  //object literal as argument
+    author: $('#article-author').val(),
+    authorUrl: $('#article-url').val(),
+    title:$('#article-title').val(),
+    category: $('#article-category').val().
+    body: $('#article-body').val(),
+    publishOn: $('#article-published:checked').length? new Date() : null;
+    // ternary operator - means made of three parts
+    // example: if 3 === 3 ? console.log("Yes") : console.log("no")
+    //        if part one then Yes     : (otherwise)  console No
+  });
 
-  // TODO: Instantiate an article based on what's in the form fields:
+  // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
+  $('#articles').append(article.toHtml());
 
-
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
-
-
-  // TODO: Activate the highlighting of any code blocks:
+  // DONE: Activate the highlighting of any code blocks:
   $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
 
   });
 
