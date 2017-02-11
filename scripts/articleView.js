@@ -79,31 +79,31 @@ articleView.initNewArticlePage = function() {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
-  $('#new-form').on('change','input, textarea', articleView.create());
+  // DONE: Add an event handler to update the preview and the export field if any inputs change.
+  $('#new-form').on('change', articleView.create);
 };
 
 articleView.create = function() {
   // DONE: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
   var article;
-  $('#articles').empty();
+  $('#article-preview').empty();
 
   // DONE: Instantiate an article based on what's in the form fields:
   article = new Article({  //object literal as argument
     author: $('#article-author').val(),
     authorUrl: $('#article-url').val(),
     title:$('#article-title').val(),
-    category: $('#article-category').val().
+    category: $('#article-category').val(),
     body: $('#article-body').val(),
-    publishOn: $('#article-published:checked').length? new Date() : null;
+    publishOn: $('#article-published:checked').length? new Date() : null
     // ternary operator - means made of three parts
     // example: if 3 === 3 ? console.log("Yes") : console.log("no")
     //        if part one then Yes     : (otherwise)  console No
   });
 
   // DONE: Use our interface to the Handblebars template to put this new article into the DOM:
-  $('#articles').append(article.toHtml());
+  $('#article-preview').append(article.toHtml());
 
   // DONE: Activate the highlighting of any code blocks:
   $('pre code').each(function(i, block) {
@@ -113,7 +113,7 @@ articleView.create = function() {
 
   // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#export-field').show();
-  $('#article-json').val(JSON.stringify(article) + ','; // val because it's an Input - if it was HTML then we would have used HTML
+  $('#article-json').val(JSON.stringify(article) + ','); // val because it's an Input - if it was HTML then we would have used HTML
   // ',' seperate the strings
 };
 
