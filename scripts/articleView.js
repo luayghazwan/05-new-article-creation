@@ -114,8 +114,10 @@ articleView.create = function() {
 
   });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  // DONE: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  $('#export-field').show();
+  $('#article-json').val(JSON.stringify(article) + ','; // val because it's an Input - if it was HTML then we would have used HTML
+  // ',' seperate the strings
 };
 
 
